@@ -138,28 +138,83 @@
                         <span class="sidebar-text">Home</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-tasks">
+                        <span>
+                            <span class="sidebar-icon">
+                                <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M7.354 1.646a.5.5 0 01.292 0l6 2a.5.5 0 01.354.475V11a1 1 0 01-.29.7l-5 4a1 1 0 01-.95.143l-.115-.057a1 1 0 01-.595-.596l-.056-.114a1 1 0 01.144-.95l4-5a1 1 0 01.7-.29h.472V3.818l-5-1.667V13a1 1 0 01-.293.7l-6 4a1 1 0 01-1.32-1.32l4-6a1 1 0 01.953-.28l.117.058a1 1 0 01.595.595l.057.117a1 1 0 01-.057.952l-4 6a1 1 0 01-.85.447h-.167a.5.5 0 01-.476-.354L.5 12.146A.5.5 0 011 11.646v-9a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v2.146L7.354 1.646zM8 2.793l-5 1.667v7.088l5-3.333 5 3.333V4.46l-5-1.667V2.793z" clip-rule="evenodd"></path>
+                                </svg>
+                            </span> 
+                            <span class="sidebar-text">Task List</span>
+                        </span>
+                        <span class="link-arrow">
+                            <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                        </span>
+                    </span>
+                    <div class="multi-level collapse pl-4" role="list" id="submenu-tasks" aria-expanded="false">
+                        <ul class="flex-column nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('map-tugas1') }}">
+                                    <span class="sidebar-icon">
+                                        <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="currentColor" aria-hidden="true">
+                                        <circle cx="10" cy="10" r="8"></circle>
+                                        </svg>
+                                    </span>
+                                    <span class="sidebar-text">Tugas 1</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <span class="nav-link collapsed d-flex" data-bs-toggle="collapse" data-bs-target="#submenu-tugas2">
+                                    <span class="sidebar-icon">
+                                        <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="currentColor" aria-hidden="true">
+                                        <circle cx="10" cy="10" r="8"></circle>
+                                        </svg>
+                                    </span>
+                                    <span class="sidebar-text">Tugas 2</span>
+                                </span>
+                                <!-- <span class="link-arrow">
+                                    <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                                </span> -->
+                                <div class="multi-level collapse" role="list" id="submenu-tugas2" aria-expanded="false">
+                                    <ul class="flex-column nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('center-point.index') }}">
+                                                <span class="sidebar-text">Titik</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('spot.index') }}">
+                                                <span class="sidebar-text">Tempat</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
 
                 
-                <li class="nav-item">
-                    <span
-                        class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                <!-- <li class="nav-item">
+                    <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
                         data-bs-toggle="collapse" data-bs-target="#submenu-components">
                         <span>
                         <span class="sidebar-icon">
                             <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" d="M7.354 1.646a.5.5 0 01.292 0l6 2a.5.5 0 01.354.475V11a1 1 0 01-.29.7l-5 4a1 1 0 01-.95.143l-.115-.057a1 1 0 01-.595-.596l-.056-.114a1 1 0 01.144-.95l4-5a1 1 0 01.7-.29h.472V3.818l-5-1.667V13a1 1 0 01-.293.7l-6 4a1 1 0 01-1.32-1.32l4-6a1 1 0 01.953-.28l.117.058a1 1 0 01.595.595l.057.117a1 1 0 01-.057.952l-4 6a1 1 0 01-.85.447h-.167a.5.5 0 01-.476-.354L.5 12.146A.5.5 0 011 11.646v-9a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v2.146L7.354 1.646zM8 2.793l-5 1.667v7.088l5-3.333 5 3.333V4.46l-5-1.667V2.793z" clip-rule="evenodd"></path>
-</svg>
-
+                                <path fill-rule="evenodd" d="M7.354 1.646a.5.5 0 01.292 0l6 2a.5.5 0 01.354.475V11a1 1 0 01-.29.7l-5 4a1 1 0 01-.95.143l-.115-.057a1 1 0 01-.595-.596l-.056-.114a1 1 0 01.144-.95l4-5a1 1 0 01.7-.29h.472V3.818l-5-1.667V13a1 1 0 01-.293.7l-6 4a1 1 0 01-1.32-1.32l4-6a1 1 0 01.953-.28l.117.058a1 1 0 01.595.595l.057.117a1 1 0 01-.057.952l-4 6a1 1 0 01-.85.447h-.167a.5.5 0 01-.476-.354L.5 12.146A.5.5 0 011 11.646v-9a.5.5 0 01.5-.5h5a.5.5 0 01.5.5v2.146L7.354 1.646zM8 2.793l-5 1.667v7.088l5-3.333 5 3.333V4.46l-5-1.667V2.793z" clip-rule="evenodd"></path>
+                            </svg>
                         </span> 
-                        <span class="sidebar-text">Task List</span>
+                            <span class="sidebar-text">Task List</span>
                         </span>
-                        <span class="link-arrow">
-                        <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                        </span>
+                            <span class="link-arrow">
+                             <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            </span>
                     </span>
                     <div class="multi-level collapse pl-4" role="list"
-                        id="submenu-components" aria-expanded="false">
-                        <ul class="flex-column nav">
+                    id="submenu-components" aria-expanded="false">
+                    <ul class="flex-column nav">
                         <li class="nav-item {{ Request::is('map-tugas1') }}">
                             <a class="nav-link" href="{{ route('map-tugas1') }}">
                             <span class="sidebar-icon">
@@ -170,11 +225,35 @@
                             <span class="sidebar-text">Tugas 1</span>
                             </a>
                         </li>
-                        <!-- <li class="nav-item {{ Request::is('belum-buat') }}">
-                            <a class="nav-link" href="{{ route('belum-buat') }}">
+                        <li class="nav-item">
+                            <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                                data-bs-toggle="collapse" data-bs-target="#submenu-components">
+                                <span class="sidebar-icon">
+                                <svg class="icon icon-xs" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" fill="currentColor" aria-hidden="true">
+                                    <circle cx="10" cy="10" r="8"></circle>
+                                </svg>
+                            </span>
                             <span class="sidebar-text">Tugas 2</span>
                             </a>
-                        </li>
+                            <span class="link-arrow">
+                             <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                            </span>
+
+                            <span>
+                                <div class="multi-level collapse pl-4" role="list"
+                                id="submenu-components" aria-expanded="false">
+                                <ul class="flex-column nav">
+                                <li class="nav-item {{ Request::is('center-point.create') }}">
+                                <a class="nav-link" href="{{ route('center-point.index') }}">
+                            </span> 
+                                <span class="sidebar-text">Titik</span>
+                            </span>
+                        
+                            <li class="nav-item {{ Request::is('spot.create') }}">
+                                <a class="nav-link" href="{{ route('spot.index') }}">
+                                <span class="sidebar-text">Tempat</span>
+                                </a>
+                            </li>
                         <li class="nav-item ">
                             <a class="nav-link" href="{{ route('belum-buat') }}">
                             <span class="sidebar-text">Tugas 3</span>
@@ -195,17 +274,16 @@
                             <span class="sidebar-text">Tugas 6</span>
                             </a>
                         </li> -->
-                        </ul>
+                        <!-- </ul>
                     </div>
-                    </li>
+                    </li> --> 
 
                 <li class="nav-item ">
                     <a href="{{ route('belum-buat') }}" class="nav-link">
                         <span class="sidebar-icon">
                             <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0l6.5 6.5a1 1 0 01-1.414 1.414l-6.5-6.5a1 1 0 010-1.414zM11 7a1 1 0 11-2 0 1 1 0 012 0zm-4 6a1 1 0 100-2 1 1 0 000 2zm3 3a1 1 0 110-2 1 1 0 010 2zm4-6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
-</svg>
-
+                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0l6.5 6.5a1 1 0 01-1.414 1.414l-6.5-6.5a1 1 0 010-1.414zM11 7a1 1 0 11-2 0 1 1 0 012 0zm-4 6a1 1 0 100-2 1 1 0 000 2zm3 3a1 1 0 110-2 1 1 0 010 2zm4-6a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
+                            </svg>
                         </span>
                         <span class="sidebar-text">Settings</span>
                     </a>
