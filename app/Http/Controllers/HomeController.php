@@ -38,12 +38,7 @@ class HomeController extends Controller
         return view('leaflet.map-tugas1');
     }
     public function spots(){
-        $centerPoint = Center_Point::get()->first();
+        $centerPoint = Centre_Point::get()->first();
         $spot =Spot::get();
-
-        return view('frontend.home',[
-            'centerPoint'=>$centerPoint,
-            'spot'=>$spot
-        ]);
     }
 }

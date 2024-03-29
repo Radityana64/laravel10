@@ -24,8 +24,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/belum-buat', [App\Http\Controllers\HomeController::class, 'belum_buat'])->name('belum-buat');
 Route::get('/map-tugas1', [App\Http\Controllers\HomeController::class, 'map_tugas1'])->name('map-tugas1');
 
-Route::get('/center-point/data', [App\Http\Controllers\Backend\DataController::class,'centerpoint'])->name('center-point.data');
+Route::get('/centre-point/data', [App\Http\Controllers\Backend\DataController::class,'centrepoint'])->name('centre-point.data');
 Route::get('/spot/data', [App\Http\Controllers\Backend\DataController::class,'spot'])->name('spot.data');
 
+Route::resource('centre-point', (App\Http\Controllers\Backend\CentrePointController::class));
 Route::resource('spot', (App\Http\Controllers\Backend\SpotController::class));
-Route::resource('center-point', (App\Http\Controllers\Backend\CenterPointController::class));

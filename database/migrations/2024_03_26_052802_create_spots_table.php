@@ -14,12 +14,11 @@ return new class extends Migration
         Schema::create('spots', function (Blueprint $table) {
             $table->id();
             $table->string('nama_dinas');
-            $table->string('slug');
             $table->string('koordinat');
             $table->string('alamat');
             $table->longText('deskripsi');
             $table->string('tipe');
-            $table->string('gambar')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

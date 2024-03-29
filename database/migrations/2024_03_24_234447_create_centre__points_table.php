@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('center__points', function (Blueprint $table) {
+        Schema::create('centre__points', function (Blueprint $table) {
             $table->id();
             $table->string('koordinat')->nullable(false);
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('center__points');
+        Schema::dropIfExists('centre__points');
     }
 };

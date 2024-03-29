@@ -178,8 +178,8 @@
                                 </span> -->
                                 <div class="multi-level collapse" role="list" id="submenu-tugas2" aria-expanded="false">
                                     <ul class="flex-column nav">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{ route('center-point.index') }}">
+                                        <li class="nav-item {{ Request::is('centre-point.index') }}">
+                                            <a class="nav-link" href="{{ route('centre-point.index') }}">
                                                 <span class="sidebar-text">Titik</span>
                                             </a>
                                         </li>
@@ -243,8 +243,8 @@
                                 <div class="multi-level collapse pl-4" role="list"
                                 id="submenu-components" aria-expanded="false">
                                 <ul class="flex-column nav">
-                                <li class="nav-item {{ Request::is('center-point.create') }}">
-                                <a class="nav-link" href="{{ route('center-point.index') }}">
+                                <li class="nav-item {{ Request::is('centre-point.create') }}">
+                                <a class="nav-link" href="{{ route('centre-point.index') }}">
                             </span> 
                                 <span class="sidebar-text">Titik</span>
                             </span>

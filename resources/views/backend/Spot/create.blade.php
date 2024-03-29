@@ -1,12 +1,12 @@
 @extends('layouts.dashboard-volt')
 
 @section('css')
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-        integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin="" />
-
+    <!-- Menambahkan stylesheet Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
     <style>
-        #map {
-            height: 400px;
+        #map { 
+            height: 700px; 
         }
     </style>
 @endsection
@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="card-header">
                         <!-- Judul Tugas -->
-                        <h2 class="text-black">Tambah Tempat</h2>
+                        <h2 class="text-black">Tambahkan Tempat</h2>
                     <div class="card-body">
                         <!-- Tempat menampilkan peta -->
                         <div id="map"></div>
@@ -30,18 +30,18 @@
         <div class="col-md-6">
             <div class="card">
                 <div class="card-header">
-                    <label for=""><h3>Tambah Data Tempat</h3></label>
+                    <label for=""><h3>Tambah Tempat</h3></label>
                 </div>
                 
                 <div class="card-body">
-                    <form action="{{ route('spot.store') }}" method="POST">
+                    <form action="{{ route('spot.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group my-3">
                         <label for="">Koordinat</label>
-                        <input type="text" class="form-control @error('koordinat')
+                        <input type="text" class="form-control @error('coordinate')
                                     is-invalid
                                 @enderror" name="koordinat" id="koordinat">
-                                @error('koordinat')
+                                @error('coordinate')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                     </div>
@@ -49,7 +49,7 @@
                     <div class="form-group my-3">
                         <label for="">Nama Dinas</label>
                         <input type="text" class="form-control @error('nama_dinas')
-                        @enderror" name="nama_dinas" id="nama_dinas">
+                        @enderror" name="nama_dinas" id="namna_rs">
                         @error('nama_dinas')
                             <div class="invalid-feedback">{{ $message }}</div>                        
                         @enderror
@@ -131,7 +131,7 @@
 
 
         var map = L.map('map',{
-            center:[{{ $centerPoint->koordinat?? -8.461893932488112, 115.35180712093975 }}],
+            center:[{{ $centerPoint->koordinat?? -8.486668932611492, 115.3173047121189}}],
             minZoom:8,
             zoom:17,
             layers:[osm]
@@ -141,15 +141,16 @@
         // Membuat ikon marker kustom
         var iconMarker = L.icon({
             iconUrl :"{{ asset('storage/marker/marker.png') }}",
-            iconSize: [50, 50], // ukuran ikon
+            iconSize:     [30, 46], // ukuran ikon
         })
 
         // Membuat marker dengan ikon kustom
-        var marker = L.marker([{{ $centerPoint->koordinat?? -8.461893932488112, 115.35180712093975 }}],{
+        var marker = L.marker([{{ $centerPoint->koordinat?? -8.486668932611492, 115.3173047121189 }}],{
             icon:iconMarker,
             draggable : true // Mengaktifkan fitur drag untuk marker
         })
         .addTo(map); // Menambahkan marker ke peta
+
 
 
         // Membuat popup baru

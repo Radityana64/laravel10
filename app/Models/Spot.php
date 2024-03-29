@@ -16,7 +16,7 @@ class Spot extends Model
             return asset('storage/ImageSpots/'.$this->image);
         }
 
-        return 'https://placehold.co/200x400?text=Gambar+Kosong';
+        return 'https://placehold.co/150x200?text=No+Image';
     }
 }
 

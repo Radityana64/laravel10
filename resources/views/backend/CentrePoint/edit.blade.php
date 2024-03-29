@@ -1,6 +1,5 @@
 @extends('layouts.dashboard-volt')
 
-
 @section('css')
     <!-- Menambahkan stylesheet Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
@@ -20,7 +19,7 @@
                 <div class="card">
                     <div class="card-header">
                         <!-- Judul Tugas -->
-                        <h2 class="text-black">Maps</h2>
+                        <h2 class="text-black">Titik Point</h2>
                     <div class="card-body">
                         <!-- Tempat menampilkan peta -->
                         <div id="map"></div>
@@ -35,25 +34,25 @@
                 </div>
                 
                 <div class="card-body">
-                    <form action="{{ route('center-point.update', $centerPoint->id) }}" method="POST">
+                    <form action="{{ route('centre-point.update', $centrePoint->id) }}" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
                         <label for="">Koordinat</label>
-                        <input type="text" value="{{ $centerPoint->koordinat }}" class="form-control @error('coordinate')
+                        <input type="text" value="{{ $centrePoint->koordinat }}" class="form-control @error('coordinate')
                                     is-invalid
                                 @enderror" name="koordinat" id="koordinat">
-                                @error('koordinat')
+                                @error('coordinate')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                     </div>
                     <div class="form-group">
                         <label for="">Latitude</label>
-                        <input type="text" class="form-control" name="latitude" id="latitude" value="{{ $centerPoint->koordinat }}">
+                        <input type="text" class="form-control" name="latitude" id="latitude" value="{{ $centrePoint->koordinat }}">
                     </div>
                     <div class="form-group">
                         <label for="">Longitude</label>
-                        <input type="text" class="form-control" name="longitude" id="longitude" value="{{ $centerPoint->koordinat }}">
+                        <input type="text" class="form-control" name="longitude" id="longitude" value="{{ $centrePoint->koordinat }}">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-sm my-2 btn-primary">Update</button>
@@ -112,15 +111,98 @@
         // Membuat ikon marker kustom
         var iconMarker = L.icon({
             iconUrl :"{{ asset('storage/marker/marker.png') }}",
-            iconSize:     [50, 50], // ukuran ikon
+            iconSize:     [30, 46], // ukuran ikon
         })
 
         // Membuat marker dengan ikon kustom
-        var marker = L.marker([{{ $centerPoint->koordinat }}],{
+        var marker = L.marker([{{ $centrePoint->koordinat }}],{
             icon:iconMarker,
             draggable : true // Mengaktifkan fitur drag untuk marker
         })
         .addTo(map); // Menambahkan marker ke peta
+
+        // var marker2 = L.marker([-8.486668932611492, 115.3173047121189],{
+        //     icon:iconMarker,
+        //     draggable : true
+        // })
+        // .bindPopup('Marker 2')
+        // .addTo(tourism);
+
+        // var marker3 = L.marker([-8.467268260694425, 115.37084147277473],{
+        //     icon:iconMarker,
+        //     draggable : true
+        // })
+        // .bindPopup('Marker 3')
+        // .addTo(tourism);
+        
+        // var marker4 = L.marker([-8.463235720208237, 115.38830801672603],{
+        //     icon:iconMarker,
+        //     draggable : true
+        // })
+        // .bindPopup('Marker 4')
+        // .addTo(tourism);
+
+        // var marker5 = L.marker([-8.45423663551003, 115.3847031280481],{
+        //     icon:iconMarker,
+        //     draggable : true
+        // })
+        // .bindPopup('Marker 5')
+        // .addTo(tourism);
+
+        // var marker6 = L.marker([-8.447794725914598, 115.38016590877855],{
+        //     icon:iconMarker,
+        //     draggable : true
+        // })
+        // .bindPopup('Marker 6')
+        // .addTo(public);
+
+
+        // // Membuat lingkaran 1
+        // var circle = L.circle([-8.645429164002962, 115.25432263477632], {
+        //     color: 'green',
+        //     fillColor: 'green',
+        //     fillOpacity: 0.5,
+        //     radius: 50
+        // }).addTo(map).bindPopup('Circle'); // Menambahkan popup pada lingkaran 1
+
+        
+
+
+        // //Membuat Polygon
+        // var polygon = L.polygon([
+        //     [-8.644531134310702, 115.25254693481176],
+        //     [-8.648678430809323, 115.24786916259878],
+        //     [-8.64688587091655, 115.25431719264468]
+	    // ]).addTo(map).bindPopup('I am a polygon.');
+
+
+        // //  Membuat Polyline
+        // var latlng =[
+        //     [-8.649450890832753, 115.25999491195525],
+        //     [-8.64833420537685, 115.27081653757861],
+        //     [-8.646623148659561, 115.27537109381738],
+        //     [-8.64688921071602, 115.27490955541373],
+        // ]
+        // var polyline = L.polyline(latlng).bindPopup('contoh polyline').addTo(map)
+        // map.fitBounds(polyline.getBounds())
+
+
+
+        // // Membuat Rectangle
+        // const koordinat =[
+        //     [-8.642182272017498, 115.25638215799657],
+        //     [-8.643459354219631, 115.26479699188323],
+        //     [-8.647436525353614, 115.25604999350104],
+        //     [-8.646122968887697, 115.26553513520663]
+	    // ]
+        // var rectangle = L.rectangle(koordinat,{
+        //         weight:2, 
+        //         fillColor:'yellow'
+        //     })
+        //     .bindPopup('Contoh rectangle')
+        //     .addTo(map)
+        // map.fitBounds(koordinat)
+
 
 
         // Membuat popup baru

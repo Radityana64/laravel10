@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="card-header">
                         <!-- Judul Tugas -->
-                        <h2 class="text-black">Maps</h2>
+                        <h2 class="text-black">Titik Point</h2>
                     <div class="card-body">
                         <!-- Tempat menampilkan peta -->
                         <div id="map"></div>
@@ -34,14 +34,14 @@
                 </div>
                 
                 <div class="card-body">
-                    <form action="{{ route('center-point.store') }}" method="POST">
+                    <form action="{{ route('centre-point.store') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="">Koordinat</label>
-                        <input type="text" class="form-control @error('koordinat')
+                        <input type="text" class="form-control @error('coordinate')
                                     is-invalid
                                 @enderror" name="koordinat" id="koordinat">
-                                @error('koordinat')
+                                @error('coordinate')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                     </div>
@@ -110,7 +110,7 @@
         // Membuat ikon marker kustom
         var iconMarker = L.icon({
             iconUrl :"{{ asset('storage/marker/marker.png') }}",
-            iconSize:     [50, 50], // ukuran ikon
+            iconSize:     [30, 46], // ukuran ikon
         })
 
         // Membuat marker dengan ikon kustom

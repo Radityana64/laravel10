@@ -1,4 +1,4 @@
-@extends('layouts.dashboard-volt')
+@extends('layouts.dashboard-volt') 
 
 @section('css')
 <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css">
@@ -10,7 +10,7 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        Daftar Dinas
+                        Daftar Tempat
                         <a href="{{ route('spot.create') }}" class=" btn btn-info btn-sm float-end">Tambah Tempat</a>
                     </div>
                     <div class="card-body" style="overflow-x: auto;">
@@ -33,7 +33,7 @@
                                     <th>Koordinat</th>
                                     <th>Alamat</th>
                                     <th>Tipe</th>
-                                    <th>Pilihan</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody></tbody>
@@ -63,6 +63,7 @@
                 responsive:true,
                 lengthChange:true,
                 autoWidth:false,
+                
                 ajax:'{{ route('spot.data') }}',
                 columns:[
                     {
@@ -78,8 +79,6 @@
                     },{
                         data:'tipe'
                     },
-                    
-                
                     {
                         data:'action'
                     }

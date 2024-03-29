@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Center_Point;
+use App\Models\Centre_Point;
 use App\Models\Spot;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,11 +14,11 @@ use Illuminate\Support\Str;
 
 class DataController extends Controller
 {
-    public function centerpoint()
+    public function centrepoint()
     {
-        $centerpoint = Center_Point::latest()->get(); 
-        return datatables()->of($centerpoint)
-        ->addColumn('action', 'backend.CenterPoint.action')
+        $centrepoint = Centre_Point::latest()->get(); 
+        return datatables()->of($centrepoint)
+        ->addColumn('action','backend.CentrePoint.action')
         ->addIndexColumn()
         ->rawColumns(['action'])
         ->toJson();
@@ -28,7 +28,7 @@ class DataController extends Controller
     {
         $spot = Spot::latest()->get(); 
         return datatables()->of($spot)
-        ->addColumn('action', 'backend.Spot.action')
+        ->addColumn('action','backend.Spot.action')
         ->addIndexColumn()
         ->rawColumns(['action'])
         ->toJson();

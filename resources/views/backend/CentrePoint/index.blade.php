@@ -10,8 +10,8 @@
             <div class="col-md-10">
                 <div class="card">
                     <div class="card-header">
-                        Data Titik
-                        <a href="{{ route('center-point.create') }}" class=" btn btn-info btn-sm float-end">Tambah Titik</a>
+                        Set Center Point
+                        <a href="{{ route('centre-point.create') }}" class=" btn btn-info btn-sm float-end">Tambah Data</a>
                     </div>
                     <div class="card-body">
                         @if (session('success'))
@@ -53,14 +53,14 @@
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
-        (function(){
+        $(function(){
             $('#dataCenterPoint').DataTable({
                 processing:true,
                 serverSide:true,
                 responsive:true,
                 lengthChange:true,
                 autoWidth:false,
-                ajax:'{{ route('center-point.data') }}',
+                ajax:'{{ route('centre-point.data') }}',
                 columns:[
                     {
                         data:'DT_RowIndex',

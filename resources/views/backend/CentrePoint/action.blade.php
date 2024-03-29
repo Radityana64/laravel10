@@ -1,5 +1,5 @@
-<a href="{{ route('center-point.edit', $model) }}" class="btn btn-warning btn-sm">Edit</a>
-<button href="{{ route('center-point.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Delete</button>
+<a href="{{ route('centre-point.edit', $model) }}" class="btn btn-warning btn-sm">Edit</a>
+<button href="{{ route('centre-point.destroy', $model) }}" class="btn btn-danger btn-sm" id="delete">Delete</button>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -29,5 +29,4 @@
             }
         })
     })
-</script>
 </script>

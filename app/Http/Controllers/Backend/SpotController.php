@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\Center_Point;
+use App\Models\Centre_Point;
 use App\Models\Spot;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -27,7 +27,7 @@ class SpotController extends Controller
      */
     public function create()
     {
-        $centerPoint = Center_Point::get()->first();
+        $centerPoint = Centre_Point::get()->first();
         return view('backend.Spot.create', ['centerPoint'=> $centerPoint]);
     }
 
@@ -37,35 +37,47 @@ class SpotController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,[
-            'nama_dinas'=>'required',
             'koordinat'=>'required',
+            'nama_dinas'=>'required',
             'alamat'=>'required',
             'deskripsi'=>'required',
             'tipe'=>'required',
-            'gambar' => 'file|image|mimes:png,jpg,jpeg'
+            'image'=>'file|image|mimes:png,jpg,jpeg',
         ]);
-        
-        $spot = new Spot;
-        if($request->hasFile('gambar')){
 
-            $file = $request->file('gambar');
-            $file -> storeAs('public/GambarSpots',$file->hashName());
+        
+
+        $spot = new Spot;
+        if($request->hasFile('image')){
+
+            // Upload gambar ke public
+            // $file = $request->file('image');
+            // $uploadFile = $file->hashName();
+            // $file->move('upload/spots/', $uploadFile);
+            // $spot->image = $file->hashName();
+            
+            
+            // Upload gambar ke storage link
+            $file = $request->file('image');
+            $file -> storeAs('public/ImageSpots',$file->hashName());
             $spot-> image = $file->hashName();
         }
 
         $spot->nama_dinas = $request->input('nama_dinas');
-        $spot->koordinat = $request->input('koordinat');
         $spot->alamat = $request->input('alamat');
         $spot->deskripsi = $request->input('deskripsi');
         $spot->tipe = $request->input('tipe');
+        $spot->koordinat = $request->input('koordinat');
         $spot->save();
+        // $spot->image=$file;
+        
+        // return dd($spot);
 
-         if($spot){
+        if($spot){
             return redirect()->route('spot.index')->with('success','Data berhasil disimpan');
         }else{
             return redirect()->route('spot.index')->with('error','Data gagal disimpan');
         }
-
     }
 
     /**
@@ -81,7 +93,7 @@ class SpotController extends Controller
      */
     public function edit(Spot $spot)
     {
-        $centerPoint = Center_Point::get()->first();
+        $centerPoint = Centre_Point::get()->first();
         return view('backend.Spot.edit',[
             'centerPoint' => $centerPoint,
             'spot'=>$spot
@@ -91,50 +103,68 @@ class SpotController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Spot $spot)
+    public function update(Request $request,Spot $spot)
     {
         $this->validate($request,[
-            'nama_dinas'=>'required',
             'koordinat'=>'required',
+            'nama_dinas'=>'required',
             'alamat'=>'required',
             'deskripsi'=>'required',
             'tipe'=>'required',
-            'gambar' => 'file|gambar|mimes:png,jpg,jpeg'
+            'image'=>'file|image|mimes:png,jpg,jpeg',
         ]);
-    
 
-    if($request->hasFile('gambar')){
-        Storage::disk('local')->delete('public/GambarSpots/' . ($spot->gambar));
-        $file = $request->file('Gambar');
-        $file->storeAs('public/GambarSpots', $file->hashName());
-        $spot->gambar = $file->hashName();
-    }
+        if($request->hasFile('image')){
+        /**
+             * Hapus file image pada folder public/upload/spots
+             */
+            // if (File::exists('upload/spots/' . $spot->image)) {
+            //     File::delete('upload/spots/' . $spot->image);
+            // }
+
+            /**
+             * Proses upload file image ke folder public/upload/spots
+             */
+            // $file = $request->file('image');
+            // $uploadFile = $file->hashName();
+            // $file->move('upload/spots/', $uploadFile);
+            // $spot->image = $uploadFile;
+
+            /**
+             * Proses hapus & upload file image ke folder public/upload/spots
+             */
+            Storage::disk('local')->delete('public/ImageSpots/' . ($spot->image));
+            $file = $request->file('image');
+            $file->storeAs('public/ImageSpots', $file->hashName());
+            $spot->image = $file->hashName();
+        }
 
         $spot->nama_dinas = $request->input('nama_dinas');
         $spot->koordinat = $request->input('koordinat');
-        $spot->alamat = $request->input('alamat');
         $spot->deskripsi = $request->input('deskripsi');
+        $spot->alamat = $request->input('alamat');
         $spot->tipe = $request->input('tipe');
         $spot->update();
 
-     if ($spot) {
+        if ($spot) {
             return to_route('spot.index')->with('success', 'Data berhasil diupdate');
         } else {
             return to_route('spot.index')->with('error', 'Data gagal diupdate');
         }
     }
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
     {
-       $spot = Spot::findOrFail($id);
-        if (File::exists('upload/spots/' . $spot->gambar)) {
-            File::delete('upload/spots/' . $spot->gambar);
+        $spot = Spot::findOrFail($id);
+        if (File::exists('upload/spots/' . $spot->image)) {
+            File::delete('upload/spots/' . $spot->image);
         }
 
         // Storage::disk('local')->delete('public/ImageSpots/' . ($spot->image));
         $spot ->delete();
-        return redirect()->back(); 
+        return redirect()->back();
     }
 }
