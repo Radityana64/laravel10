@@ -188,6 +188,11 @@
                                                 <span class="sidebar-text">Tempat</span>
                                             </a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{{ route('spots') }}">
+                                                <span class="sidebar-text">Tampilan</span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </li>

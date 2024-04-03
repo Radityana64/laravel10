@@ -39,6 +39,15 @@ class HomeController extends Controller
     }
     public function spots(){
         $centerPoint = Centre_Point::get()->first();
-        $spot =Spot::get();
+        $spot = Spot::get();
+
+        return view('hasil.home',[
+            'centerPoint'=>$centerPoint,
+            'spot'=>$spot
+        ]);
+    }
+    public function detailSpot($id){
+        $spot = Spot::findOrFail($id);
+        return view('hasil.detail',['spot'=>$spot]);
     }
 }

@@ -29,3 +29,6 @@ Route::get('/spot/data', [App\Http\Controllers\Backend\DataController::class,'sp
 
 Route::resource('centre-point', (App\Http\Controllers\Backend\CentrePointController::class));
 Route::resource('spot', (App\Http\Controllers\Backend\SpotController::class));
+
+Route::get('/spots',[\App\Http\Controllers\HomeController::class,'spots'])->name('spots');
+Route::get('/detail-spot/{id}',[\App\Http\Controllers\HomeController::class,'detailSpot'])->name('detail-spot');

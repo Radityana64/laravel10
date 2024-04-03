@@ -48,12 +48,15 @@
 @endsection
 
 @push('javascript')
+    <!-- Pastikan jQuery dimuat terlebih dahulu -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     
+    <!-- Kemudian baru memuat file DataTables -->
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script> 
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js"></script>
 
     <script>
-        $(function(){
+        $(function () {
             $('#dataCenterPoint').DataTable({
                 processing:true,
                 serverSide:true,
@@ -66,7 +69,7 @@
                         data:'DT_RowIndex',
                         orderable:false,
                         searchable:false
-                    },{
+                    }, {
                         data:'koordinat'
                     },
                     {
