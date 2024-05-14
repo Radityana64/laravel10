@@ -438,13 +438,21 @@
                     <ul class="list-inline list-group-flush list-group-borderless text-md-end mb-0">
                         <!-- <li class="list-inline-item px-0 px-sm-1" style="margin-right: -5px;">
                             <a href="">2105551095</a>
-                        </li> -->
-                        
+                        </li> -->                        
                         <li class="list-inline-item px-0 px-sm-1 "style="margin-right: -5px;">
                             <a href="https://www.linkedin.com/in/i-nengah-radityana-2bb871262/" target="_blank" >
                                 <img class="avatar rounded-circle" alt="Image placeholder" src="{{ asset('storage/volt/html&css/assets/img/icons/linkedin.png') }}">
                             </a>   
                         </li>
+                        <li class="list-inline-item px-0 px-sm-1 "style="margin-right: -5px;">
+                            <a class="nav-link" href="#" onclick="event.preventDefault(); console.log('Logout link clicked'); document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+                        </li>
+                    
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </ul>
                 </div>
 
@@ -493,7 +501,18 @@
     @stack('javascript')
     <!-- Volt JS -->
     {{-- <script src="{{ asset('volt/hmtl&css/assets/js/volt.js') }}"></script> --}}
-
+        
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const sidebarToggle = document.querySelector('.navbar-toggler');
+                sidebarToggle.addEventListener('click', function () {
+                    document.getElementById('sidebar').classList.toggle('collapse');
+                });
+                @if(session('status'))
+                    toastr.success('{{ session('status') }}');
+                @endif
+            });
+        </script>
 
 </body>
 
